@@ -4,10 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>js02_kadai_nakamura</title>
+    <title>js03_kadai_nakamura</title>
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <!-- ここにはhtmlを記述 -->
@@ -51,13 +50,12 @@
 
         <div class="chart_style">
           <canvas id="myChart"></canvas>
-        </div>        
+        </div>                
+        
+        <div class="button_style"><button id="save">結果保存</button></div>
+        <div id="output" style="overflow: auto;height: 300px;"></div>
 
-        <script src="js/charting.js">
-        </script>
-        
-        
-        
+
         <!-- <table id="list"></table> -->
         <p class="about__1 text-center">シミュレーションの前提</p>
         <p class="about__2 text-center">本シミュレーションは株式・債券・為替の過去20年分の年次データを活用して確率変数を発生させて資産形成モデルを作っています
@@ -167,15 +165,64 @@
       <h3 class="footer__1">copyrights 2021 Jin Nakamura All RIghts Reserved.</h3>
     </footer>
 
+    
     <!-- ここにはhtmlを記述 -->
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+    // 追加１
+    import { getDatabase, ref, push, set, onChildAdded, remove, onChildRemoved } 
+    from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+
+    const firebaseConfig = {
+    apiKey: "AIzaSyAicGA_NSigVTMrYlF2Ox_fhVLs1s7V8rc",
+    authDomain: "js03-nakamura.firebaseapp.com",
+    projectId: "js03-nakamura",
+    storageBucket: "js03-nakamura.appspot.com",
+    messagingSenderId: "191200816809",
+    appId: "1:191200816809:web:11d4c1a3617f201d64c3b8"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+
+    // 追加２
+
+    const db  = getDatabase(app); //RealtimeDBに接続
+    const dbRef = ref(db,"Asset management"); //RealtimeDB内の"chat"を使う
+
+    $("#save").on("click",function(){
+    const value = localStorage.getItem("100回目")
+    const newPostRef = push(dbRef);
+    set(newPostRef,value);
+  })
+
+  // alert(uname + text)
+
+  // 受信処理
+  onChildAdded(dbRef,function(data){
+      const value = data.val();
+      const key = data.key;
+      let h = "<p>";
+          h += value;
+          h += "</p>";
+          $("#output").append(h);
+  })
+
+</script>
+
+    </script>
+    <!-- このコメントの行より下にjsフォルダのtest.jsを読み込みましょう🤗 1.授業でやります!-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.js"></script>
     <script src="http://www.kogures.com/hitoshi/javascript/mathlib.js"></script>
-    
-    <!-- このコメントの行より下にjsフォルダのtest.jsを読み込みましょう🤗 1.授業でやります!-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/charting.js"></script>
+    <script src="js/simulation.js"></script> 
     <!-- 授業でやる箇所 ↓-->
     <!-- aaaaa -->
-    <script src="js/test.js"></script>   
+  
     <!-- 授業でやる箇所 ↑-->
   </body>
 </html>
