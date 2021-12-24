@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>js02_kadai_nakamura</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <!-- ここにはhtmlを記述 -->
+    <section>
+      <div class="title-wrapper">
+        <!-- ■メインビジュアル -->
+        <img src="img/mainbg2.jpeg" alt="">
+        <h1 class="site-title">未来のための資産形成シミュレーション</h1>
+        <p class="sub-title"> 老後資金2000万円問題克服プランゲーム</p>
+      </div>
+    </section>
+    
+    <section id="about" class="about__section">
+      <DIV class="about__wrapper">
+        <h2 class="eng-title-b">あなたの資産総額は...</h2>
+        <h5 class="jpn-title2"></h5>
+        <h3 class="jpn-title about__subtitle">現在の年齢から65歳まで毎月積立で資産形成をしていきます
+         <br>積み立てる資金の一貫した運用手段を以下の選択肢から選んでください
+         <br>資産運用結果は100回試行した平均結果も同時に表示されます
+          <br>金融庁が老後資金として足りなくなると報告した2000万円を超えた資産形成はできるでしょうか...</h3>
+        <div class="form__wrapper">
+          <dl class="form__inner">
+            <dt class="form__title">現在の年齢</dt>
+            <dd class="form__item"><input type="text" id="age"></dd>
+            <dt class="form__title">毎月積立額 (万円) </dt>
+            <dd class="form__item"><input type="text" id="monthly_saving" placeholder="平均3万円程度"></dd>
+          </dl>
+        </div>
+        <div class="button_style">
+          <button id="Deposit" class="button_item">日本円預金</button>
+          <button id="TOPIX" class="button_item">日本株式インデックス</button>
+          <button id="USBOND" class="button_item">米国中長期債</button>
+          <button id="MSCI_AWCI" class="button_item">世界株式インデックス</button>
+          <button id="MSCI_Developed" class="button_item">先進国株式インデックス</button>
+          <button id="MSCI_EM" class="button_item">新興国株式インデックス</button>
+        </div>
+
+        <!-- <div class="button_style">
+          <button id="Graph" class="button_item">グラフ化</button>
+        </div> -->
+
+        <div class="chart_style">
+          <canvas id="myChart"></canvas>
+        </div>        
+
+        <script src="js/charting.js">
+        </script>
+        
+        
+        
+        <!-- <table id="list"></table> -->
+        <p class="about__1 text-center">シミュレーションの前提</p>
+        <p class="about__2 text-center">本シミュレーションは株式・債券・為替の過去20年分の年次データを活用して確率変数を発生させて資産形成モデルを作っています
+        <br>そのため、同じ選択肢を取ってもクリックする度に結果は異なります（リスク性資産で運用する場合）
+        <br>HtmlのLocal Storageを確認すると毎年の積立・運用結果が65歳までの時系列で確認できます</p>
+        <p class="about__2 text-center">株式・債券で運用する場合、毎年過去データの平均・標準偏差に基づいた正規分布の値動きでリターンが生まれます
+          <br>更に、海外資産で運用する場合はドル建てになるので、積立時と資産形成完了時の為替変動リスクが生じることになります
+        </p>
+        <p class="about__3 text-center">（実際の資産運用では、各種資産への分散投資や資産形成後期でのリスク軽減が図られるので、今回の単純なシミュレーションよりリスクは低くなります）</p>
+      </DIV>
+    </section>
+
+    <section id="course" class="course__section">
+      <div class="course__wrapper">
+        <h3 class="eng-title-y text-center">運用手段の紹介</h3>
+        
+        <div class="courseBox">
+          <div class="imgBlock">
+            <img src="img/deposit.jpeg" alt="" />
+          </div>
+          <div class="textBox">
+            <h4 class="textBox__title">日本円預金</h4>
+            <p class="textBox__text">
+              日本円預金は金利が極めて低いですが、
+              上限1000万円までは預金保険で保護対象になり国が保護してくれます。
+              日本円のため為替リスクもないため、最も安全な資産といえます。
+              ただし、インフレが生じた場合、実質的に価値が減損する可能性に注意が必要です
+            </p>
+          </div>
+        </div>
+        <div class="courseBox hanten">
+          <div class="imgBlock">
+            <img src="img/jpnindex.jpeg" alt="" />
+          </div>
+          <div class="textBox">
+            <h4 class="textBox__title">日本株式インデックス</h4>
+            <p class="textBox__text">
+              日本の上場企業株式全体に分散投資をする運用オプションです。
+              世界経済、特に先進国市場の動向と相関して株式相場は動く傾向にあります。
+              成熟市場のため成長率は高くないですが、直近は上昇相場が続いています。
+              日本円で運用するため、為替リスクはありません
+            </p>
+          </div>
+        </div>
+        <div class="courseBox">
+          <div class="imgBlock">
+            <img src="img/usbond.jpeg" alt="" />
+          </div>
+          <div class="textBox">
+            <h4 class="textBox__title">米国中長期債</h4>
+            <p class="textBox__text">
+              米国政府の発行する7−10年を償還期限に設定している国債に
+              米大手運用会社ブラックロックのファンド経由で投資します。
+              債券自体のデフォルトリスクは極めて低いですが、
+              市場金利の変動に応じて債券価格が上下するので値動きはあります。
+              ドル建て投資のため為替リスクが発生します
+            </p>
+          </div>
+        </div>
+        <div class="courseBox hanten">
+          <div class="imgBlock">
+            <img src="img/worldindex.jpeg" alt="" />
+          </div>
+          <div class="textBox">
+            <h4 class="textBox__title">世界株式インデックス</h4>
+            <p class="textBox__text">
+              世界の株式市場全体に連動するように、
+              先進国・新興国の上場企業に満遍なく分散投資する運用オプションです。
+              ドル建て投資のため為替リスクが発生します
+            </p>
+          </div>
+        </div>
+        <div class="courseBox">
+          <div class="imgBlock">
+            <img src="img/developed.jpeg" alt="" />
+          </div>
+          <div class="textBox">
+            <h4 class="textBox__title">先進国株式インデックス</h4>
+            <p class="textBox__text">
+              先進国（米国・日本・欧州諸国など）の
+              上場企業に分散投資する運用オプションです。
+              中国・インドなどの新興国市場と連動しないため、
+              成長率はやや低くなりますが、変動も小さくなります。
+              ドル建て投資のため為替リスクが発生します
+            </p>
+          </div>
+        </div>
+        <div class="courseBox hanten">
+          <div class="imgBlock">
+            <img src="img/emerging.jpeg" alt="" />
+          </div>
+          <div class="textBox">
+            <h4 class="textBox__title">新興国株式インデックス</h4>
+            <p class="textBox__text">
+              中国・インド・台湾・韓国・ブラジルなどの新興国市場の
+              株式相場と連動するように各市場の上場企業に分散投資
+              する運用オプションです。
+              新興国の経済成長を運用リターンとして得られる反面、
+              経済的な脆弱性によるリスクも抱えることになります。
+              ドル建て投資のため為替リスクが発生します
+            </p>
+          </div>
+        </div>
+    </section>
+
+    <footer class="footer__section">
+      <h3 class="footer__1">copyrights 2021 Jin Nakamura All RIghts Reserved.</h3>
+    </footer>
+
+    <!-- ここにはhtmlを記述 -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.js"></script>
+    <script src="http://www.kogures.com/hitoshi/javascript/mathlib.js"></script>
+    
+    <!-- このコメントの行より下にjsフォルダのtest.jsを読み込みましょう🤗 1.授業でやります!-->
+    <!-- 授業でやる箇所 ↓-->
+    <!-- aaaaa -->
+    <script src="js/test.js"></script>   
+    <!-- 授業でやる箇所 ↑-->
+  </body>
+</html>
+
+<!-- FB session memo -->
+<!-- グローバル関数で定義すると、全体に適用されてしまうので、
+  なるべくローカル関数でやる 
+  コメントアウトを使って第３者でも分かるようにする
+-->

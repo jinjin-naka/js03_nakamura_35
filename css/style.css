@@ -1,0 +1,259 @@
+html{
+    font-size: 100%;
+}
+
+.chart_style{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    height: 100vh;
+    margin: 60px;
+}
+
+body{
+    color: #222222;
+    font-size: 1rem;
+}
+
+img{
+    width: auto;
+    height: auto;    
+}
+
+.text-center{
+    text-align: center;
+}
+
+.eng-title-y{
+    font-size: 24px;
+    text-align: center;
+    color: green;
+    font-weight: bold;
+    margin: 0 0 60px 0;
+}
+
+.eng-title-b{
+    font-size: 48px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.jpn-title{
+    font-size: 18px;
+    text-align: center;
+    margin: 30px 0 30px 0;
+    line-height: 2;
+}
+
+.jpn-title2{
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+    margin: 30px 0 30px 0;
+    line-height: 2;
+}
+
+.wrapper{
+    width: 1200px;
+    margin: auto;
+}
+
+/* Header */
+
+.wrapper__header{
+    font-size: 21px;
+    text-align: center;
+}
+
+/* Title */
+
+.site-title {
+    font-size: 48px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    position: absolute;
+    top: 100px;
+    left: 20%;
+    margin: auto;
+}
+
+.sub-title {
+    font-size: 36px;
+    text-align: center;
+    color: white;
+    position: absolute;
+    top: 180px;
+    left: 28%;
+    margin-right: auto;
+    margin-left: auto;
+    
+}
+
+.title-wrapper{
+    width: 1200px;
+    height: 600px;
+    margin: auto;
+}
+
+.title-wrapper img{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    position: relative;
+}
+
+/* About */
+.about__section{
+    padding: 60px 0 0;
+}
+
+.about__wrapper{
+    width: 1200px;
+    margin: auto;
+}
+
+
+.about__1{
+    line-height: 2;
+    margin: 60px 0 0 0;
+}
+
+.about__2{
+    line-height: 2;
+    margin: 40px 0 0 0;
+}
+
+.about__3{
+    line-height: 2;
+    margin: 40px 0 80px 0;
+    font-style: italic;
+}
+
+.about__pics{
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.about__pics img{
+    width: 25%;
+}
+
+.button_style{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    width: 100% ;
+}
+
+.input_style{
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100% ;
+}
+
+.form__wrapper{
+    margin: 0 0 60px 0;
+}
+
+.form__inner{
+    width: 640px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+}
+
+.form__title{
+    width: 159px;
+    padding: 8px 64px 8px 16px;
+    line-height: 1.5;
+}
+
+.form__item{
+    width: 328px;
+    padding: 8px 8px 8px 8px;
+}
+
+.button_item{
+    margin: auto;
+}
+
+/* Course */
+
+.course__section{
+    padding: 60px 0 60px 0;
+}
+
+.course__wrapper{
+    width: 1200px;
+    margin: auto;
+}
+
+.course__1{
+    line-height: 2;
+    margin: 30px 0 60px 0;
+    text-align: center;   
+}
+
+.courseBox {
+    /* border: 10px solid red; */
+    margin: 0 auto;
+    width: 1200px;
+    display: flex;
+  }
+  .courseBox.hanten {
+    flex-direction: row-reverse;
+  }
+  
+  .imgBlock {
+    width: 50%;
+  }
+  
+  .imgBlock img {
+    width: 100%;
+  }
+  
+  .textBox {
+    width: 50%;
+    padding: 90px 200px 0 50px;
+    box-sizing: border-box;
+  }
+  .textBox__title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .courseBox.hanten .textBox {
+    padding: 90px 50px 0 200px;
+  }
+  
+  .textBox__text {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+/* Footer */
+
+.footer__section{
+    background-color: #707077;
+    width: 1200px;
+    margin: auto;
+    padding: 30px 0 30px 0;
+}
+
+.footer__1{
+    color: white;
+    text-align: center;
+}
+
+.checkbox__vertical{
+    display: block;
+    margin: 0 0 24px 0;
+}
