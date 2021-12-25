@@ -52,8 +52,12 @@
           <canvas id="myChart"></canvas>
         </div>                
         
-        <div class="button_style"><button id="save">結果保存</button></div>
-        <div id="output" style="overflow: auto;height: 300px;"></div>
+        <div class="button_style">
+          <button id="save">結果保存</button>
+          <button id="all_delete">結果全削除</button>
+        </div>
+        <div id="output" style="overflow: auto;height: 300px;line-height:2;"></div>
+
 
 
         <!-- <table id="list"></table> -->
@@ -192,7 +196,10 @@
     const dbRef = ref(db,"Asset management"); //RealtimeDB内の"chat"を使う
 
     $("#save").on("click",function(){
-    const value = localStorage.getItem("100回目")
+    const value = {
+      name: localStorage.getItem("運用方法"),
+      term: localStorage.getItem("運用年数"),
+      result: localStorage.getItem("平均")}
     const newPostRef = push(dbRef);
     set(newPostRef,value);
   })
@@ -203,11 +210,26 @@
   onChildAdded(dbRef,function(data){
       const value = data.val();
       const key = data.key;
-      let h = "<p>";
-          h += value;
-          h += "</p>";
-          $("#output").append(h);
+      let hh = `
+        <div class="message" data-key=${key}>
+          <p>${"運用手段："+value.name+"　運用期間："+value.term+"年　運用結果平均："+value.result+"万円"}</p>
+          <p class="delete">削除</p>
+        </div>`;
+          $("#output").append(hh);
   })
+
+  $(document).on("click", ".delete", function(){
+        var v = $(this).parent().data().key;
+        remove(ref(db,"Asset management/"+v));
+        $(this).parent().remove();
+      });
+
+  $(document).on("click", "#all_delete", function(){
+    remove(ref(db,"Asset management/"));
+    $("#output").children().remove();
+  });
+
+  localStorage.clear();
 
 </script>
 

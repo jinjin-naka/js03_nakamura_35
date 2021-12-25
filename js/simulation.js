@@ -60,6 +60,9 @@ $("#MSCI_AWCI").on("click",function(){
     myChart.data.datasets[0].data = am_result
     myChart.data.labels = relabel     
     }
+    localStorage.setItem("運用方法","世界株式")
+    localStorage.setItem("平均",Math.round(sum/100))
+    localStorage.setItem("運用年数", 65-$("#age").val())
     console.log(sum/100)
     console.log(JSON.stringify(result_total),null,'\t');
     myChart.update()
@@ -91,6 +94,9 @@ $("#Deposit").on("click",function(){
     myChart.data.datasets[0].data = am_result 
     myChart.data.labels = relabel     
     }
+    localStorage.setItem("運用方法","現預金")
+    localStorage.setItem("平均",Math.round(sum/100))
+    localStorage.setItem("運用年数", 65-$("#age").val())
     console.log(sum/100)
     myChart.update()
     $("h5").html("100回試行平均 "+Math.round(sum/100)+"万円");
@@ -125,6 +131,9 @@ $("#TOPIX").on("click",function(){
     myChart.data.datasets[0].data = am_result
     myChart.data.labels = relabel      
     }
+    localStorage.setItem("運用方法","日本株式")
+    localStorage.setItem("平均",Math.round(sum/100))
+    localStorage.setItem("運用年数", 65-$("#age").val())
     console.log(sum/100)
     myChart.update()
     $("h5").html("100回試行平均 "+Math.round(sum/100)+"万円");
@@ -160,6 +169,9 @@ $("#MSCI_EM").on("click",function(){
     myChart.data.datasets[0].data = am_result
     myChart.data.labels = relabel      
     }
+    localStorage.setItem("運用方法","新興国株式")
+    localStorage.setItem("平均",Math.round(sum/100))
+    localStorage.setItem("運用年数", 65-$("#age").val())
     console.log(sum/100)
     myChart.update()
     $("h5").html("100回試行平均 "+Math.round(sum/100)+"万円");
@@ -195,6 +207,9 @@ $("#MSCI_Developed").on("click",function(){
     myChart.data.datasets[0].data = am_result 
     myChart.data.labels = relabel     
     }
+    localStorage.setItem("運用方法","先進国株式")
+    localStorage.setItem("平均",Math.round(sum/100))
+    localStorage.setItem("運用年数", 65-$("#age").val())
     console.log(sum/100)
     myChart.update()
     $("h5").html("100回試行平均 "+Math.round(sum/100)+"万円");
@@ -230,6 +245,9 @@ $("#USBOND").on("click",function(){
     myChart.data.datasets[0].data = am_result
     myChart.data.labels = relabel      
     }
+    localStorage.setItem("運用方法","米国中長期債")
+    localStorage.setItem("平均",Math.round(sum/100))
+    localStorage.setItem("運用年数", 65-$("#age").val())
     console.log(sum/100)
     myChart.update()
     $("h5").html("100回試行平均 "+Math.round(sum/100)+"万円");
